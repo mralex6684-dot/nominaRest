@@ -5,15 +5,19 @@ background:#0f172a;
 color:white;
 }
 
+/* LAYOUT */
+
 .layout{
 display:flex;
 height:100vh;
 }
 
+/* SIDEBAR */
+
 .sidebar{
 width:250px;
 background:#020617;
-padding:20px;
+padding:25px;
 }
 
 .logo{
@@ -27,7 +31,7 @@ padding:0;
 }
 
 .menu li{
-margin-bottom:15px;
+margin-bottom:10px;
 }
 
 .menu a{
@@ -48,11 +52,15 @@ background:#ef4444;
 color:white;
 }
 
+/* CONTENT */
+
 .content{
 flex:1;
 display:flex;
 flex-direction:column;
 }
+
+/* TOPBAR */
 
 .topbar{
 display:flex;
@@ -78,8 +86,19 @@ padding:8px 14px;
 border-radius:6px;
 }
 
+/* MAIN */
+
 .main{
 padding:30px;
+}
+
+/* CARDS */
+
+.cards{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:20px;
+margin-bottom:25px;
 }
 
 .card{
@@ -88,44 +107,12 @@ padding:25px;
 border-radius:12px;
 }
 
-.card-header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-margin-bottom:20px;
+.card span{
+font-size:28px;
+font-weight:bold;
 }
 
-.btn-agregar{
-background:#ef4444;
-color:white;
-border:none;
-padding:8px 16px;
-border-radius:6px;
-cursor:pointer;
-}
-
-.btn-agregar:hover{
-background:#dc2626;
-}
-
-.btn-editar{
-background:#3b82f6;
-border:none;
-color:white;
-padding:6px 10px;
-border-radius:5px;
-margin-right:5px;
-cursor:pointer;
-}
-
-.btn-eliminar{
-background:#ef4444;
-border:none;
-color:white;
-padding:6px 10px;
-border-radius:5px;
-cursor:pointer;
-}
+/* TABLAS */
 
 .tabla-empleados{
 width:100%;

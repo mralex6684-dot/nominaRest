@@ -1,20 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
 
 <meta charset="UTF-8">
+<title>Dashboard | NominaRest</title>
 
-<title>Dashboard</title>
-
-<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="styles.css">
 
 </head>
-
 
 <body>
 
 <div class="layout">
+
 
 <div class="sidebar">
 
@@ -23,22 +22,24 @@
 <ul class="menu">
 
 <li class="active"><a href="#">Dashboard</a></li>
-
 <li><a href="empleados.html">Empleados</a></li>
-
-<li><a href="#">Roles</a></li>
-
-<li><a href="#">Nómina</a></li>
-
+<li><a href="#">Roles y cargos</a></li>
+<li><a href="#">Generar nómina</a></li>
+<li><a href="#">Pagos</a></li>
+<li><a href="#">Historial</a></li>
 <li><a href="#">Reportes</a></li>
+<li><a href="#">Configuración</a></li>
 
 </ul>
 
 </div>
 
 
+<!-- CONTENIDO -->
+
 <div class="content">
 
+<!-- TOPBAR -->
 
 <div class="topbar">
 
@@ -51,21 +52,177 @@ Administrador
 </div>
 
 
+
+<!-- MAIN -->
+
 <div class="main">
+
+<!-- CARDS -->
+
+<div class="cards">
 
 <div class="card">
 
-<h2>Bienvenido a NominaRest</h2>
+<h3>Total empleados</h3>
 
-<p>Selecciona una opción del menú.</p>
+<span id="totalEmpleados">25</span>
+
+</div>
+
+
+<div class="card">
+
+<h3>Nóminas generadas</h3>
+
+<span>12</span>
+
+</div>
+
+
+<div class="card">
+
+<h3>Pagos pendientes</h3>
+
+<span>4</span>
 
 </div>
 
 </div>
 
-</div>
+
+
+<!-- TABLA -->
+
+<div class="card">
+
+<div class="card-header">
+
+<h2>Últimas nóminas</h2>
 
 </div>
+
+<table class="tabla-empleados">
+
+<thead>
+
+<tr>
+
+<th>Empleado</th>
+<th>Monto</th>
+<th>Estado</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+<tr>
+
+<td>Juan Pérez</td>
+<td>$1,200,000</td>
+<td>Pendiente</td>
+
+</tr>
+
+<tr>
+
+<td>María García</td>
+<td>$980,000</td>
+<td>Pagado</td>
+
+</tr>
+
+<tr>
+
+<td>Carlos Ruiz</td>
+<td>$1,100,000</td>
+<td>Pendiente</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+
+
+<!-- GRAFICO -->
+
+<div class="card">
+
+<h2>Pagos mensuales</h2>
+
+<canvas id="graficoPagos" height="120"></canvas>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+<script>
+
+const ctx = document.getElementById("graficoPagos");
+
+new Chart(ctx, {
+
+type: "bar",
+
+data: {
+
+labels: ["Enero","Febrero","Marzo","Abril","Mayo"],
+
+datasets: [
+
+{
+
+label: "Pagos",
+
+data: [1200000,1400000,1100000,1600000,1500000],
+
+backgroundColor: "#ef4444"
+
+}
+
+]
+
+},
+
+options: {
+
+plugins:{
+legend:{display:false}
+},
+
+scales:{
+y:{
+ticks:{color:"white"}
+},
+x:{
+ticks:{color:"white"}
+}
+}
+
+}
+
+})
+
+</script>
+
 
 </body>
+
 </html>
