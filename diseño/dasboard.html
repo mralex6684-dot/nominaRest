@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+<div class="container">
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <h2>NominaRest</h2>
+
+        <div class="menu-item">Dashboard</div>
+        <div class="menu-item" onclick="irEmpleados()">Empleados</div>
+        <div class="menu-item">Generar Nómina</div>
+        <div class="menu-item">Reportes</div>
+    </div>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <h2>Últimas Nóminas</h2>
+
+        <div class="card">
+            <table width="100%">
+                <tr>
+                    <th>Empleado</th>
+                    <th>Total</th>
+                    <th>Estado</th>
+                </tr>
+
+                <tbody id="tablaNomina"></tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="../js/app.js"></script>
+<script>
+async function cargarNominas() {
+    const res = await fetch("http://localhost/nominaRest/public/index.php?url=empleados");
+    const data = await res.json();
+
+    let html = "";
+
+    data.forEach(e => {
+        html += `
+        <tr>
+            <td>${e.nombre}</td>
+            <td>$${e.salario_base}</td>
+            <td>Activo</td>
+        </tr>`;
+    });
+
+    document.getElementById("tablaNomina").innerHTML = html;
+}
+
+cargarNominas();
+
+function irEmpleados() {
+    window.location.href = "empleados.html";
+}
+</script>
+
+</body>
+</html>

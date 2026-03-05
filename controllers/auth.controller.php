@@ -1,6 +1,6 @@
 <?php
 require_once("../config/db.php");
-require_once("../models/Usuario.php");
+require_once("../models/usuarios.php");
 
 $method = $_SERVER['REQUEST_METHOD'];
 
