@@ -22,3 +22,26 @@ async function login() {
         alert(data.error);
     }
 }
+
+async function cargarEmpleados(){
+
+    const res = await fetch("http://localhost/nominaRest/public/index.php?url=empleados");
+    const data = await res.json();
+
+    let html = "";
+
+    data.forEach(emp => {
+
+        html += `
+        <tr>
+            <td>${emp.nombre}</td>
+            <td>${emp.documento}</td>
+        </tr>
+        `;
+
+    });
+
+    document.getElementById("tabla").innerHTML = html;
+}
+
+cargarEmpleados();

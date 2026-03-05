@@ -1,66 +1,268 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <title>Empleados</title>
-    <link rel="stylesheet" href="login.css">
+
+<meta charset="UTF-8">
+<title>Empleados | NominaRest</title>
+
+<link rel="stylesheet" href="../css/styles.css">
+
 </head>
+
+
 <body>
 
 <div class="main">
-    <h2>Empleados</h2>
 
-    <button onclick="crearEmpleado()">Agregar</button>
+<div class="card">
 
-    <table width="100%">
-        <thead>
-            <tr>
-                <th>Nombre</th>
-                <th>Documento</th>
-            </tr>
-        </thead>
-        <tbody id="tabla"></tbody>
-    </table>
+<div class="card-header">
+
+<h2>Empleados</h2>
+
+<button class="btn-agregar" onclick="abrirModalAgregar()">
+Agregar
+</button>
+
 </div>
 
-<script src="../js/app.js"></script>
+
+<table class="tabla-empleados">
+
+<thead>
+
+<tr>
+<th>Nombre</th>
+<th>Documento</th>
+<th>Acciones</th>
+</tr>
+
+</thead>
+
+<tbody id="tabla">
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+
+<div id="modalAgregar" class="modal">
+
+<div class="modal-content">
+
+<h3>Agregar empleado</h3>
+
+<input type="text" id="nombre" placeholder="Nombre">
+
+<input type="text" id="documento" placeholder="Documento">
+
+<div class="modal-botones">
+
+<button onclick="guardarEmpleado()">Guardar</button>
+
+<button onclick="cerrarModal()">Cancelar</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div id="modalEditar" class="modal">
+
+<div class="modal-content">
+
+<h3>Editar empleado</h3>
+
+<input type="hidden" id="editarId">
+
+<input type="text" id="editarNombre">
+
+<input type="text" id="editarDocumento">
+
+<div class="modal-botones">
+
+<button onclick="actualizarEmpleado()">Actualizar</button>
+
+<button onclick="cerrarModal()">Cancelar</button>
+
+</div>
+
+</div>
+
+</div>
+
+
 <script>
-async function cargar() {
-    const res = await fetch("http://localhost/nominaRest/public/index.php?url=empleados");
-    const data = await res.json();
 
-    let html = "";
+const API = "http://localhost/nominaRest/public/index.php?url="
 
-    data.forEach(e => {
-        html += `<tr>
-            <td>${e.nombre}</td>
-            <td>${e.documento}</td>
-        </tr>`;
-    });
 
-    document.getElementById("tabla").innerHTML = html;
+
+async function cargarEmpleados(){
+
+const res = await fetch(API + "empleados")
+
+const data = await res.json()
+
+let html = ""
+
+data.forEach(emp => {
+
+html += `
+
+<tr>
+
+<td>${emp.nombre}</td>
+
+<td>${emp.documento}</td>
+
+<td>
+
+<button class="btn-editar"
+onclick="abrirEditar(${emp.id}, '${emp.nombre}', '${emp.documento}')">
+
+Editar
+
+</button>
+
+<button class="btn-eliminar"
+onclick="eliminarEmpleado(${emp.id})">
+
+Eliminar
+
+</button>
+
+</td>
+
+</tr>
+
+`
+
+})
+
+document.getElementById("tabla").innerHTML = html
+
 }
 
-cargar();
+cargarEmpleados()
 
-function crearEmpleado() {
-    const nombre = prompt("Nombre:");
-    const documento = prompt("Documento:");
 
-    fetch("http://localhost/nominaRest/public/index.php?url=empleados", {
-        method: "POST",
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-            nombre,
-            documento,
-            correo: "",
-            telefono: "",
-            id_rol: 1,
-            salario_base: 1000000
-        })
-    }).then(() => cargar());
+
+function abrirModalAgregar(){
+
+document.getElementById("modalAgregar").style.display = "flex"
+
 }
+
+function cerrarModal(){
+
+document.getElementById("modalAgregar").style.display = "none"
+
+document.getElementById("modalEditar").style.display = "none"
+
+}
+
+async function guardarEmpleado(){
+
+const nombre = document.getElementById("nombre").value
+const documento = document.getElementById("documento").value
+
+
+await fetch(API + "empleados", {
+
+method:"POST",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+
+nombre,
+documento,
+correo:"",
+telefono:"",
+id_rol:1,
+salario_base:1000000
+
+})
+
+})
+
+
+cerrarModal()
+
+cargarEmpleados()
+
+}
+
+
+function abrirEditar(id,nombre,documento){
+
+document.getElementById("editarId").value = id
+document.getElementById("editarNombre").value = nombre
+document.getElementById("editarDocumento").value = documento
+
+document.getElementById("modalEditar").style.display = "flex"
+
+}
+
+
+async function actualizarEmpleado(){
+
+const id = document.getElementById("editarId").value
+
+const nombre = document.getElementById("editarNombre").value
+const documento = document.getElementById("editarDocumento").value
+
+
+await fetch(API + "empleados/"+id,{
+
+method:"PUT",
+
+headers:{
+"Content-Type":"application/json"
+},
+
+body:JSON.stringify({
+nombre,
+documento
+})
+
+})
+
+
+cerrarModal()
+
+cargarEmpleados()
+
+}
+
+async function eliminarEmpleado(id){
+
+if(!confirm("¿Eliminar empleado?")) return
+
+
+await fetch(API + "empleados/"+id,{
+
+method:"DELETE"
+
+})
+
+
+cargarEmpleados()
+
+}
+
 </script>
+
 
 </body>
 </html>
