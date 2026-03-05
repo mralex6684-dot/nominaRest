@@ -1,6 +1,6 @@
 <?php
-require_once("../config/db.php");
-require_once("../models/Empleado.php");
+require_once("db.php");
+require_once("empleado.php");
 
 $method = $_SERVER['REQUEST_METHOD'];
 

@@ -1,6 +1,6 @@
 <?php
-require_once("../config/db.php");
-require_once("../models/Horas.php");
+require_once("db.php");
+require_once("horas.php");
 
 $method = $_SERVER['REQUEST_METHOD'];
 
