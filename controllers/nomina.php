@@ -1,5 +1,5 @@
 <?php
-require_once("db.php");
+require_once("../config/db.php");
 require_once("horas.php");
 require_once("nomina.php");
 require_once("nomina.service.php");

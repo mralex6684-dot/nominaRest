@@ -1,5 +1,7 @@
 <?php
 
+require_once("../config/db.php"); 
+
 function calcularNomina($salario, $horas, $horas_extra) {
 
     $valorHora = $salario / 240;

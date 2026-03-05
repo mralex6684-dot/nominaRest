@@ -1,26 +1,32 @@
 <?php
 
-$request = $_GET['url'] ?? '';
+header("Content-Type: application/json");
 
-switch($request) {
+$request = isset($_GET['url']) ? $_GET['url'] : '';
+
+switch ($request) {
 
     case 'empleados':
         require_once("../routes/empleados.routes.php");
-    break;
+        break;
 
     case 'horas':
         require_once("../routes/horas.routes.php");
-    break;
+        break;
 
     case 'nomina':
         require_once("../routes/nomina.routes.php");
-    break;
+        break;
+
+    case 'login':
+        require_once("../routes/auth.routes.php");
+        break;
 
     default:
-        echo json_encode(["mensaje" => "Ruta no encontrada"]);
-    break;
+        echo json_encode([
+            "error" => "Ruta no encontrada"
+        ]);
+        break;
 }
 
-case 'login':
-    require_once("../routes/auth.routes.php");
-break;
+?>
