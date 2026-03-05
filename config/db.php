@@ -3,7 +3,7 @@
 $host = "localhost";
 $user = "root";
 $password = "";
-$database = "nominaRest";
+$database = "nominarest";
 
 $conn = new mysqli($host, $user, $password, $database);
 

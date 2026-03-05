@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Generar Nómina</title>
+
+<link rel="stylesheet" href="css/styles.css">
+
+</head>
+
+<body>
+
+<div class="layout">
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+<h2 class="logo">NominaRest</h2>
+
+<ul class="menu">
+
+<li><a href="dashboard.html">Dashboard</a></li>
+
+<li><a href="empleados.html">Empleados</a></li>
+
+<li class="active"><a href="#">Generar nómina</a></li>
+
+<li><a href="reportes.html">Reportes</a></li>
+
+</ul>
+
+</div>
+
+
+<!-- CONTENIDO -->
+
+<div class="content">
+
+<div class="topbar">
+
+<input class="search" placeholder="Buscar...">
+
+<div class="usuario">
+Administrador
+</div>
+
+</div>
+
+
+<div class="main">
+
+<div class="card">
+
+<h2>Generar Nómina</h2>
+
+
+<label>Empleado</label>
+
+<select id="empleadoSelect">
+
+<option value="">Seleccionar empleado</option>
+
+</select>
+
+
+<br><br>
+
+
+<button class="btn-agregar" onclick="generarNomina()">
+
+Generar Nómina
+
+</button>
+
+
+<div id="resultadoNomina"></div>
+
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script src="js/nomina.js"></script>
+
+</body>
+</html>

@@ -12,6 +12,7 @@
 
 <body>
 
+    
 <div class="layout">
 
 
@@ -24,7 +25,7 @@
 
 <li><a href="empleados.html">Empleados</a></li>
 
-<li><a href="nomina.html">Generar nómina</a></li>
+<li><a href="generar_nomina.html">Generar nómina</a></li>
 
 <li><a href="reportes.html">Reportes</a></li>
 
@@ -50,16 +51,13 @@ Administrador
 
 </div>
 
-<div class="main">
-
-
 <div class="cards">
 
 <div class="card">
 
 <h3>Total empleados</h3>
 
-<span id="totalEmpleados">25</span>
+<span id="totalEmpleados">0</span>
 
 </div>
 
@@ -68,7 +66,7 @@ Administrador
 
 <h3>Nóminas generadas</h3>
 
-<span>12</span>
+<span id="totalNominas">0</span>
 
 </div>
 
@@ -77,12 +75,11 @@ Administrador
 
 <h3>Pagos pendientes</h3>
 
-<span>4</span>
+<span id="pagosPendientes">0</span>
 
 </div>
 
 </div>
-
 <div class="card">
 
 <div class="card-header">
@@ -208,7 +205,7 @@ ticks:{color:"white"}
 })
 
 </script>
-
+<script src="js/dashboard.js"></script>
 
 </body>
 
