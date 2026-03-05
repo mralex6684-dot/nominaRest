@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+<title>Reportes</title>
+
+<link rel="stylesheet" href="styles.css">
+
+</head>
+
+
+<body>
+
+<div class="layout">
+
+
+<div class="sidebar">
+
+<h2 class="logo">NominaRest</h2>
+
+<ul class="menu">
+    
+<li><a href="dashboard.html">Dashboard</a></li>
+<li><a href="empleados.html">Empleados</a></li>
+<li><a href="generar_nomina.html">Generar nómina</a></li>
+<li><a href="reportes.html">Reportes</a></li>
+
+</ul>
+
+</div>
+
+
+<div class="content">
+
+
+<div class="topbar">
+
+<input class="search" placeholder="Buscar...">
+
+<div class="usuario">
+Administrador
+</div>
+
+</div>
+
+
+<div class="main">
+
+
+<div class="card">
+
+<h2>Historial de Nóminas</h2>
+
+
+<table class="tabla-empleados">
+
+<thead>
+
+<tr>
+<th>ID</th>
+<th>Empleado</th>
+<th>Total Pagado</th>
+</tr>
+
+</thead>
+
+<tbody id="tablaReportes">
+
+</tbody>
+
+</table>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+
+<script>
+
+const API = "http://localhost/nominaRest/public/index.php?url="
+
+
+async function cargarReportes(){
+
+const res = await fetch(API + "nominas")
+
+const data = await res.json()
+
+let html = ""
+
+data.forEach(n =>{
+
+html += `
+
+<tr>
+
+<td>${n.id}</td>
+<td>${n.id_empleado}</td>
+<td>$${n.total_pagar}</td>
+
+</tr>
+
+`
+
+})
+
+document.getElementById("tablaReportes").innerHTML = html
+
+}
+
+cargarReportes()
+
+</script>
+
+
+</body>
+</html>

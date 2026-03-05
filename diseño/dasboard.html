@@ -1,71 +1,71 @@
 <!DOCTYPE html>
-<html lang="es">
+<html>
+
 <head>
-    <meta charset="UTF-8">
-    <title>Dashboard</title>
-    <link rel="stylesheet" href="login.css">
+
+<meta charset="UTF-8">
+
+<title>Dashboard</title>
+
+<link rel="stylesheet" href="css/styles.css">
+
 </head>
+
+
 <body>
 
-<div class="container">
+<div class="layout">
 
-    <!-- SIDEBAR -->
-    <div class="sidebar">
-        <h2>NominaRest</h2>
+<div class="sidebar">
 
-        <div class="menu-item">Dashboard</div>
-        <div class="menu-item" onclick="irEmpleados()">Empleados</div>
-        <div class="menu-item">Generar Nómina</div>
-        <div class="menu-item">Reportes</div>
-    </div>
+<h2 class="logo">NominaRest</h2>
 
-    <!-- MAIN -->
-    <div class="main">
+<ul class="menu">
 
-        <h2>Últimas Nóminas</h2>
+<li class="active"><a href="#">Dashboard</a></li>
 
-        <div class="card">
-            <table width="100%">
-                <tr>
-                    <th>Empleado</th>
-                    <th>Total</th>
-                    <th>Estado</th>
-                </tr>
+<li><a href="empleados.html">Empleados</a></li>
 
-                <tbody id="tablaNomina"></tbody>
-            </table>
-        </div>
+<li><a href="#">Roles</a></li>
 
-    </div>
+<li><a href="#">Nómina</a></li>
+
+<li><a href="#">Reportes</a></li>
+
+</ul>
 
 </div>
 
-<script src="../js/app.js"></script>
-<script>
-async function cargarNominas() {
-    const res = await fetch("http://localhost/nominaRest/public/index.php?url=empleados");
-    const data = await res.json();
 
-    let html = "";
+<div class="content">
 
-    data.forEach(e => {
-        html += `
-        <tr>
-            <td>${e.nombre}</td>
-            <td>$${e.salario_base}</td>
-            <td>Activo</td>
-        </tr>`;
-    });
 
-    document.getElementById("tablaNomina").innerHTML = html;
-}
+<div class="topbar">
 
-cargarNominas();
+<input class="search" placeholder="Buscar...">
 
-function irEmpleados() {
-    window.location.href = "empleados.html";
-}
-</script>
+<div class="usuario">
+Administrador
+</div>
+
+</div>
+
+
+<div class="main">
+
+<div class="card">
+
+<h2>Bienvenido a NominaRest</h2>
+
+<p>Selecciona una opción del menú.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
 
 </body>
 </html>

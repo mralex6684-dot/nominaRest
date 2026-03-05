@@ -1,0 +1,149 @@
+body{
+margin:0;
+font-family:Arial;
+background:#0f172a;
+color:white;
+}
+
+.layout{
+display:flex;
+height:100vh;
+}
+
+.sidebar{
+width:250px;
+background:#020617;
+padding:20px;
+}
+
+.logo{
+color:#ef4444;
+margin-bottom:30px;
+}
+
+.menu{
+list-style:none;
+padding:0;
+}
+
+.menu li{
+margin-bottom:15px;
+}
+
+.menu a{
+text-decoration:none;
+color:#94a3b8;
+display:block;
+padding:10px;
+border-radius:6px;
+}
+
+.menu a:hover{
+background:#1e293b;
+color:white;
+}
+
+.active a{
+background:#ef4444;
+color:white;
+}
+
+.content{
+flex:1;
+display:flex;
+flex-direction:column;
+}
+
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 25px;
+background:#020617;
+border-bottom:1px solid #1e293b;
+}
+
+.search{
+background:#1e293b;
+border:none;
+padding:10px;
+border-radius:6px;
+color:white;
+width:250px;
+}
+
+.usuario{
+background:#1e293b;
+padding:8px 14px;
+border-radius:6px;
+}
+
+.main{
+padding:30px;
+}
+
+.card{
+background:#1e293b;
+padding:25px;
+border-radius:12px;
+}
+
+.card-header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:20px;
+}
+
+.btn-agregar{
+background:#ef4444;
+color:white;
+border:none;
+padding:8px 16px;
+border-radius:6px;
+cursor:pointer;
+}
+
+.btn-agregar:hover{
+background:#dc2626;
+}
+
+.btn-editar{
+background:#3b82f6;
+border:none;
+color:white;
+padding:6px 10px;
+border-radius:5px;
+margin-right:5px;
+cursor:pointer;
+}
+
+.btn-eliminar{
+background:#ef4444;
+border:none;
+color:white;
+padding:6px 10px;
+border-radius:5px;
+cursor:pointer;
+}
+
+.tabla-empleados{
+width:100%;
+border-collapse:collapse;
+}
+
+.tabla-empleados th{
+text-align:left;
+padding:14px;
+color:#94a3b8;
+border-bottom:2px solid #334155;
+}
+
+.tabla-empleados td{
+padding:14px;
+border-bottom:1px solid #334155;
+}
+
+.tabla-empleados tr:hover{
+background:#334155;
+}
